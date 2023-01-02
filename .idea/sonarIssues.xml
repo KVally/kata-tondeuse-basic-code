@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../AzureRepos/Commandes-Cash-Port-API/src/main/java/com/prosuma/storefc/service/Util.java">
           <value>
             <set />
