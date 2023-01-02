@@ -3,15 +3,26 @@ package entities;
 import java.util.Arrays;
 
 public class Tondeuse {
-    final Surface surface;
+    Surface surface;
     int x, y;
     Orientation orientation;
 
-    public Tondeuse(Surface surface, int x, int y, Orientation orientation) {
-        this.surface = surface;
+    public Tondeuse(int x, int y, Orientation orientation) {
         this.x = x;
         this.y = y;
         this.orientation = orientation;
+        nouvelleSurfaceAexplorer(new Surface(0,0));
+    }
+
+    public Tondeuse(Surface surface, int x, int y, Orientation orientation) {
+        nouvelleSurfaceAexplorer(surface);
+        this.x = x;
+        this.y = y;
+        this.orientation = orientation;
+    }
+
+    public void nouvelleSurfaceAexplorer(Surface surface){
+        this.surface = surface;
     }
 
     public void avancer (){
@@ -58,7 +69,8 @@ public class Tondeuse {
 
     public void executerInstruction(String instructions){
         var listAction = instructions.split("");
-        System.out.println(positionActuelle());
+        System.out.println("________________________________");
+        System.out.println(" Position initiale => "+positionActuelle());
         Arrays.stream(listAction).forEach(action->{
             switch (action){
                 case "A":
@@ -71,8 +83,11 @@ public class Tondeuse {
                     tournerADroite();
                     break;
             }
-            System.out.println(action +" => "+positionActuelle());
         });
+        System.out.println(" Position finale => "+positionActuelle());
+        System.out.println("________________________________");
+        System.out.println();
+
     }
 
     public String positionActuelle(){
